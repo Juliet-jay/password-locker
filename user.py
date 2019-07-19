@@ -20,6 +20,16 @@ class User:
         save_contact method save user objects into user_list
         '''
         User.user_list.append(self)
+        
+    @classmethod
+    def display_users(cls):
+        '''
+        method that returns users using the password locker
+        app
+        '''
+        return cls.user_list 
+
+     
     @classmethod
     def user_verified(cls,name,password):
     
