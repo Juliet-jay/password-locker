@@ -2,8 +2,6 @@ import unittest # importing the unittest module
 from user import User #importing the user class
 
 class TestUser(unittest.TestCase):
-    
-
     '''
     Test class that defines test cases for the contact class behavior
 
@@ -15,14 +13,15 @@ class TestUser(unittest.TestCase):
      '''
      set up method to run before each test case
      '''
-     self.new_user = User("Juliet","Muthee")
+     self.new_user = User("Juliet","Mwiti","jules@gmail.com")
      
     def test_init(self):
       '''
       test_init test case to test if the object is initialized properly
       '''
       self.assertEqual(self.new_user.name,"Juliet")
-      self.assertEqual(self.new_user.password,"Muthee")
+      self.assertEqual(self.new_user.password,"mwiti")
+      self.assertEqual(self.new_user.email,"jules@gmail.com")
       
     def test_save_user(self):
       '''
@@ -38,7 +37,7 @@ class TestUser(unittest.TestCase):
        object to our user-list
        '''
        self.new_user.save_user()
-       test_user = User("Juliet","Muthee")
+       test_user = User("mike","Gichui","mike@gmail.com")
        test_user.save_user()
        self.assertEqual(len(User.user_list),2)
        
@@ -60,9 +59,9 @@ class TestUser(unittest.TestCase):
            '''
            
           self.new_user.save_user()
-          test_user=User("john","kelly")
+          test_user=User("john","Emma","martin")
           test_user.save_user()
-          logged_in=User.user_verified("john","kelly")
+          logged_in=User.user_verified("john","Emma","martin")
           
           self.assertTrue(logged_in)
     
