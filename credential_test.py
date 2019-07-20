@@ -15,3 +15,12 @@ class TestUser(unittest.TestCase):
         tearDown method that does clean up after each test case has run.
         """
         Credential.credential_list = []
+        
+    def test_init(self):
+        """
+        test_init test case to test if the object is properly initialized
+        """
+        self.assertEqual(self.new_credential.user_name, "user_name")
+        self.assertEqual(self.new_credential.password, "password")
+        self.assertEqual(self.new_credential.email, "email@gmail.com")
+    
