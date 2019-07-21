@@ -28,16 +28,15 @@ def save_credential(credential):
     """
     credential.save_credential() 
 
-    
-    
-    
+def display_users():
+    '''
+    Function that returns the users using pass_locker
+    '''
+    return User.display_users()   
 
 def user_log_in(name,password,email):
     '''
-    Function that allows a user to log in to their    credential account
-    Args:
-        name:Name of the user who created the acount
-        password:Password the user used to create the account
+    Function that allows a user to log in to their credentials 
     '''
     verified_user=User.user_verified(name,password,email)
     
@@ -56,13 +55,22 @@ def del_credential(credential):
     credential.delete_credential()
     
 def generated_password(pass_length):
-    """
-    function that generate a random password for a user's credential
-    
+    '''
+    Function that generate a random password for a user's credential
     Args:
-        pass_length:length the user wants the password to be
-    """
-    # password=Credential.generate_password(pass_length)
+        pass_length:Length the user wants the password to be 
+    '''
+    password=Credential.generate_password(pass_length)
+
+    return password  
+
+def display_credentials(user_name,user_password,email):
+    '''
+    Function that returns all the users saved credentials
+    '''
+
+    return Credential.display_credential(user_name,user_password,email)        
+ 
 
     
     
