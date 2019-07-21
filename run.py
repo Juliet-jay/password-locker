@@ -69,7 +69,15 @@ def display_credentials(user_name,user_password,email):
     Function that returns all the users saved credentials
     '''
 
-    return Credential.display_credential(user_name,user_password,email)        
+    return Credential.display_credential(user_name,user_password,email)
+
+def find_by_name(user_name,user_password,email,credential_name):
+    '''
+    Function that find a credential by name and returns the credential
+    '''
+
+    return Credential.find_by_name(user_name,user_password,email,credential_name)
+        
  
 
     
