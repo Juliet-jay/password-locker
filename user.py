@@ -8,14 +8,14 @@ class User:
     '''
     user_list = [] #Empty user list
     
-    def __init__(self,name,password):
+    def __init__(self,name,password,email):
         
         self.name=name
         self.password=password
+        self.email=email
         
     def save_user(self):
-        
-        
+           
         '''
         save_contact method save user objects into user_list
         '''
@@ -31,7 +31,7 @@ class User:
 
      
     @classmethod
-    def user_verified(cls,name,password):
+    def user_verified(cls,name,password,email):
     
         '''
         methods that takes the user logings and returs boolean its true
@@ -44,10 +44,10 @@ class User:
               Boolean true if they both match to a user and false 
               if it doesn't
         '''
-        for user in cls.user_list:
-            if user.name==name and user.password==password:
-                return True
-        return False
+        # for user in cls.user_list:
+        #     if user.name==name and user.password==password:
+        #         return True
+        # return False
           
         
    
