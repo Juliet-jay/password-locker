@@ -1,6 +1,6 @@
 from user import User
 from credential import Credential
-import random
+
 
 def create_user(name,password,email):
     """
@@ -47,9 +47,9 @@ def generated_password(pass_length):
     Args:
         pass_length:length the user wants the password to be
     """
-    password=Credential.generate_password(pass_length)
+    # password=Credential.generate_password(pass_length)
 
-    return password
+    
     
 
 
