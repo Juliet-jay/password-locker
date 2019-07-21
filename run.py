@@ -77,6 +77,15 @@ def find_by_name(user_name,user_password,email,credential_name):
     '''
 
     return Credential.find_by_name(user_name,user_password,email,credential_name)
+
+def main():
+    '''
+    Function running the passlocker app
+    '''
+    print("-"*33)
+    print("Hello!Welcome to PassWord Locker!")
+    print("-"*33)
+    print("\n")
         
  
 
