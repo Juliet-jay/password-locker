@@ -27,7 +27,22 @@ def save_credential(credential):
     function to safe user credentials
     """
     credential.save_credential() 
+
     
+    
+    
+
+def user_log_in(name,password,email):
+    '''
+    Function that allows a user to log in to their    credential account
+    Args:
+        name:Name of the user who created the acount
+        password:Password the user used to create the account
+    '''
+    verified_user=User.user_verified(name,password,email)
+    
+    return verified_user
+       
 def del_user(user):
     """
     function to delete a user
