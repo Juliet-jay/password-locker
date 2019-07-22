@@ -87,7 +87,7 @@ class TestCredential(unittest.TestCase):
         test auto generate to see if we can generate a password for a user credentials
         '''
         #password length
-        pass_length=8
+        pass_length=7
 
         #variable to hold the password
         generated_password=Credential.generate_password(pass_length)
