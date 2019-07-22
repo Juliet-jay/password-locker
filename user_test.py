@@ -12,14 +12,14 @@ class TestUser(unittest.TestCase):
         '''
         Set up method to run before each test case
         '''
-        self.new_user=User("Olivia","_Dunham21")
+        self.new_user=User("Juliet","_patrick21")
 
     def test_init(self):
         '''
         test init test case to test if the obj is initialized correctly
         '''
-        self.assertEqual(self.new_user.name,"Olivia")
-        self.assertEqual(self.new_user.password,"_Dunham21")
+        self.assertEqual(self.new_user.name,"Juliet")
+        self.assertEqual(self.new_user.password,"_patrick21")
 
     def test_save_user(self):
         '''
@@ -34,7 +34,7 @@ class TestUser(unittest.TestCase):
         '''
 
         self.new_user.save_user()
-        test_user=User("Walter","02_Bishop")
+        test_user=User("Tommy","linet_5")
         test_user.save_user()
         self.assertEqual(len(User.user_list),2)
 
@@ -57,9 +57,9 @@ class TestUser(unittest.TestCase):
         '''
         #confirms if as vallid credentials are entered
         self.new_user.save_user()
-        test_user=User("Peter","Bishop_3")
+        test_user=User("Eric","Nate_3")
         test_user.save_user()
-        logged_in=User.user_verified("Peter","Bishop_3")
+        logged_in=User.user_verified("Eric","Nate_3")
 
         self.assertTrue(logged_in)
 

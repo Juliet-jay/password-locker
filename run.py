@@ -91,225 +91,111 @@ def find_by_name(user_name, user_password,credential_name):
 
 
 def main():
-
-    print("Welcome to your Password Locker, choose your path from the list of allowed actions")
+    # Dealing user class first
+    print("Hello! Welcome to Password Locker! Please Key in your name:  ")
+    name = input ()
+    print(f"Hey {name}, please create an account to access Password Locker")
+    print('\n')
+    
+    print("Reply with these short codes : ca - create account,  ex -exit ")
+    
+    
 
     while True:
-            print('''Use these short codes to get around \n
-            ShortCodes: \n
-                ca:create new pass locker account \n
-                du:display users using pass locker\n
-                lg:login to your account \n
-                ex:exit the app          ''')
-        #take user input
-            short_code = input().lower()
+        short_code = input().lower()
 
-            if short_code == "ca":
-                print("-"*27)
-                print("New Password Locker Account")
-                print("-"*27)
-                print("\n")
+        if short_code == 'cc':
+            print("Creating account...")
+            print("Key in these details:")
+            print("Username: ")
+            username = input()
 
-                print("Enter User Name")
-                user_name = input()
+            print("Password: ")
+            password = input()
 
-                print("Enter Account Password")
-                user_password = input()
-
-
-                save_user( create_user(user_name,user_password) ) #create and save user
-                print('\n')
-                print(f"Password Locker Account for {user_name} created succesfully!!")
-                print('\n')
+            save_user(create_useraccount(username, password))
+            print('\n')
+            print(f"{name}'s Account : ")
+            print(f"Username: {username} \n , Password:{password}")
+            print('\n')
+            print(f"Logged in. Welcome {username}!")
             
-            elif short_code == 'du':
-                '''
-                Displays name of current users
-                '''
-                if display_users():
-                    print("Here are the users using password locker")
-                    print('-'*30)
-                    print('\n')   
-
-                    for user in display_users():
-                        print(f"User_Name:{user.name}")
-                        print("\n")
-
-                else:
-                    print('\n')
-                    print("**Password locker has no users!\n   Fancy being first user?**")
-                    print('\n')
-
-
-            elif short_code == "lg":
-                '''
-                Logs in user to the password locker account
-                '''
-                print('\n')
-                print("*"*35)    
-                print("Log into Password Locker Account")
-                print("*"*35)
-
-                print("Enter User Name")
-                user_name = input()
-                
-                print("Enter Password")
-                user_password = input()
-                
-                print("Enter email")
-                user_email = input()
-
-
-                if  user_log_in(user_name,user_password):
-                    print('\n')
-                    print("*"*40)    
-                    print(f"Welcome {user_name} to your Credentials" )
-                    print("*"*40)
-
-                while True:
-                    '''
-                    Loop to run functionalities after successful login
-                    '''
-                    print('''Use these short code to navigate \n
-                        cc:Create a new credential \n
-                        dc:Display saved credentials \n
-                        gc:Generate credential with a random password\n
-                        dl:Delete credential\n    
-                        ex:Log out of credential account           ''')
-
-                    #get short code from user
-                    short_code = input().lower()
-
-                    if short_code == "cc":
-                        '''
-                        Creating a credential
-                        '''
-                        print('\n')
-                        print("New Credential")
-                        print("-"*15)
-
-                        print("Name of the Credential...")   
-                        credential_name = input()
-
-                        print("Password of the Credential...")
-                        credential_password = input()
-
-                        #create and save credential
-                        save_credential( create_credential(user_name,user_password,credential_name,credential_password)
-                        )
-
-                        print('\n')
-                        print(f"Credentials for *{credential_name}* has been created and saved successfully")
-                        print('\n') 
-
-                    elif short_code == 'dc':
-                        '''
-                        Returning the user's saved credentials
-                        '''
-
-                        if display_credentials(user_name,user_password):
-                            print('\n')
-                            print(f"{user_name} Credentials")
-                            print("-"*25)
-
-                            for credential in display_credentials(user_name,user_password):
-                                print(f"Account:{credential.credential_name}")
-                                print(f"Password:{credential.credential_password}")  
-                                print('-'*25)
-
-                        else:
-                            print("\n")
-                            print("You have no credentials saved")
-                            print("Create a new one...")
-                            print("\n") 
-
-                    elif short_code == 'gc':
-                        '''
-                        Generate Credential with a randomised password
-                        '''
-                        print("\n")
-                        print("New Credential With Auto-Generated Password")
-                        print("-"*42)
-                        print("\n")
-
-                        print("Enter Name of Credential...")
-                        credential_name = input()
-
-                        print("Enter length size for the password e.g 7")
-                        pass_length = int(input())
-
-                        #create,save new credential with a randomised key
-                        save_credential(create_credential(user_name,user_password,credential_name,(generated_password(pass_length))))  
-
-                        print('\n')
-                        print(f"**Credential {credential_name} has been created and saved successfully**")
-                        print('\n')    
-
-                    elif short_code == 'dl':
-                        '''
-                        Delete a Credential
-                        '''
-                        print('\n')
-                        print("Enter Name Of The Credential...")
-                        print("-"*31)
-                        credential_name = input()
-
-                        if credential_exists(user_name,user_password,credential_name):
-                            search_credential = find_by_name(user_name,user_password,credential_name)
-                            print(f"{search_credential.credential_name}\n{search_credential.credential_password}")
-
-                            print('\n')
-                            print(f"Are You Sure You Wish to Delete {search_credential.credential_name}? \n   This Action is Irreversible")    
-                            print("Enter y/n...")
-                            print('\n')
-
-                            delete_response = input().lower()
-
-                            if delete_response == 'y':
-                                search_credential.delete_credential()
-                                print("**Credential Deleted Successfully**")
-                                print('\n')
-
-                            else :
-                                print("Probably a good idea")
-                                print("... Exiting delete action")
-                                print("\n")
-                                    
-
-                        else:
-                            print(f"**No credential with the name {credential_name} exists**")
-                            print("\n")
-                            
-
-
-                    elif short_code == 'ex':
-                        '''
-                        Exit credential account
-                        '''
-                        print(f"See you later {user_name}")
-                        print("Logging Out...")
-                        print("Logged Out")
-                        print('\n')
-                        break 
-                    else:
-                        '''
-                        User types wrong code
-                        '''
-                        print('\n')
-                        print(f"Sorry there is no option associated with code:{short_code}")  
-                        print("Try Again..!")
-                        print('\n')  
-
-
-            else:
-                print('\n')
-                print(f"No Account for {user_name}")
-                print("Please try again or create an account")
-                print('\n')
-
-           
           
-                        
-if __name__ == "__main__":
-    main()
+            print("Use these short codes : ca - create a new account, da - display accounts, fa -find an account, gp - generate a random password , ex -exit t")
+            
+
+        elif short_code == "ca":
+            print("Enter account details: ")
+  
+            account = input()
+            print("Email: ")
+            email = input()
+        
+            print("Would you like a generate password?")
+            res = input()
+            if res =="yes":
+                letters= "abcdefghijklmnopqrstuvwxyz01234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()?"
+                how_many = len(letters)            
+                passlock = "".join(random.sample(letters,8))
+                print(f"Your password has 8 characters ")
+                print(passlock)
+                save_cred(create_credentials(account, email, passlock))
+                print("Credentials saved! Enter 'da' to see account")
+              
+                print("Use these short codes : ca - create a new account, da - display accounts, fa -find an account, gp - generate a random password , ex -exit the contact list ")
+                
+            elif res == "no":
+                print("Password: ")
+                passlock = input()   
+                save_cred(create_credentials(account, email, passlock))
+                print("Credentials saved! Enter 'da' to see account")
+                
+                print("Use these short codes : ca - create a new account, da - display accounts, fa -find an account, gp - generate a random password , ex -exit the contact list ")
+                
+            else:
+                print("i dont get it please use shortcode 'ca' and start again")
+
+        elif short_code == "da":
+            print(f"These are your accounts {name}:")
+            
+            for cred in display_cred():
+                print(f"{cred.account} {cred.email} {cred.passlock}")
+            else:
+                
+                print("If empty, you do not have any accounts saved")
+
+        elif short_code == "fa":
+      
+            search_cred= input()
+            if find_account(search_cred):
+                search_acc = find_account(search_cred)
+                print(f"{search_acc.account} {search_acc.email} { search_acc.passlock}")
+            else: print("This account does not exist")
+            
+        elif short_code == "gp":
+                letters= "abcdefghijklmnopqrstuvwxyz01234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()?"
+                how_many = len(letters)
+                print("How long would you like your password to be? ")
+                print(f"p.s: Maximum length of password is {how_many}")
+                lent = int(input())
+                password = "".join(random.sample(letters, lent))
+                print(f"Your password has {lent} characters ")
+                print(password)
+                
+            
+        elif short_code == 'ex':
     
+            print("logging out...")
+            print('\n')
+            print('\n')
+            print("logged out")
+    
+            break
+
+
+        else:
+            print("Invalid, please  use these short codes : ca - create a new account, da - display accounts, fa -find an account, de- delete account , gp - generate a random password , ex -logout")
+
+if __name__ == '__main__':
+    main()  
+
