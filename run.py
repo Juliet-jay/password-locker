@@ -105,10 +105,13 @@ def main():
         short_code = input().lower()
 
         if short_code == 'cc':
+            
             print("Creating account...")
             print("Key in these details:")
             print("Username: ")
             username = input()
+            
+            print("\n")
 
             print("Password: ")
             password = input()
