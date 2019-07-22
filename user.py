@@ -8,11 +8,11 @@ class User:
     '''
     user_list = [] #Empty user list
     
-    def __init__(self,name,password,email):
+    def __init__(self,name,password):
         
         self.name=name
         self.password=password
-        self.email=email
+        
         
     def save_user(self):
            
@@ -31,7 +31,7 @@ class User:
 
      
     @classmethod
-    def user_verified(cls,name,password,email):
+    def user_verified(cls,name,password):
     
         '''
         methods that takes the user logings and returs boolean its true
