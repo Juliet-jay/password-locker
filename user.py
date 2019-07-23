@@ -44,11 +44,6 @@ class User:
               Boolean true if they both match to a user and false 
               if it doesn't
         '''
-        # for user in cls.user_list:
-        #     if user.name==name and user.password==password:
-        #         return True
-        # return False
-          
         
    
     
