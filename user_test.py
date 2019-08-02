@@ -1,5 +1,5 @@
 import unittest
-from user import User #importing the User class
+from user import User 
 
 class TestUser(unittest.TestCase):
     '''
@@ -21,13 +21,7 @@ class TestUser(unittest.TestCase):
         self.assertEqual(self.new_user.name,"Juliet")
         self.assertEqual(self.new_user.password,"_patrick21")
 
-    def test_save_user(self):
-        '''
-        test save user to test if the user object is saved into the user list
-        '''
-        self.new_user.save_user() #saving a user
-        self.assertEqual(len(User.user_list),1)
-
+    
     def test_save_multiple_user(self):
         '''
         test save multiple to check if we can save multiple user obj to our user_list
@@ -37,6 +31,14 @@ class TestUser(unittest.TestCase):
         test_user=User("Tommy","linet_5")
         test_user.save_user()
         self.assertEqual(len(User.user_list),2)
+        
+    def test_save_user(self):
+        '''
+        test save user to test if the user object is saved into the user list
+        '''
+        self.new_user.save_user() 
+        self.assertEqual(len(User.user_list),1)
+
 
     def tearDown(self):
         '''
@@ -44,13 +46,7 @@ class TestUser(unittest.TestCase):
         '''
         User.user_list=[]  
 
-    def test_display_users(self):
-        '''
-        test_display_users returns list of password locker users
-        ''' 
-
-        self.assertEqual(User.display_users(),User.user_list)
-
+    
     def test_login_user(self):
         '''
         test_login_ to login a user
@@ -62,6 +58,14 @@ class TestUser(unittest.TestCase):
         logged_in=User.user_verified("Eric","Nate_3")
 
         self.assertTrue(logged_in)
+        
+    def test_display_users(self):
+        '''
+        test_display_users returns list of password locker users
+        ''' 
+
+        self.assertEqual(User.display_users(),User.user_list)
+
 
 
 

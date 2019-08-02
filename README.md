@@ -20,9 +20,9 @@ At the terminal, run the following command:
 ## Behavior Driven Development
   
 
-  | Given                 | When                       | Then                              |
+  | Given                 | When                       | Then                                |
   | ----------------------|:--------------------------:|:---------------------------------:|
-  | allowed actions       | a user types in the action | the program fulfils the action    |
+  | allowed actions       | a user types in the action | the program fulfils the action      |
  
 
 ## Built With

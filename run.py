@@ -18,11 +18,11 @@ def save_user(user):
      user.save_user()
 
 
-def create_credential(user_name, user_password,):
+def create_credential(user_name, user_password,credential_name,credential_password):
     """
     function to create new user credentials
     """
-    new_credential = Credential(user_name, user_password,)
+    new_credential = Credential(user_name, user_password,credential_name,credential_password)
     return new_credential
 
 
@@ -79,7 +79,7 @@ def display_credentials(user_name, user_password,):
     Function that returns all the users saved credentials
     '''
 
-    return Credential.display_credential(user_name, user_password, email)
+    return Credential.display_credential(user_name, user_password)
 
 
 def find_by_name(user_name, user_password,credential_name):
@@ -88,6 +88,14 @@ def find_by_name(user_name, user_password,credential_name):
     '''
 
     return Credential.find_by_name(user_name, user_password,credential_name)
+
+
+def credential_exists(user_name,user_password,credential_name):
+    '''
+    function that finds credential by name and returns credential
+    '''
+    
+    return Credential.credential_exists(user_name,user_password,credential_name)
 
 
 def main():
@@ -99,19 +107,12 @@ def main():
     
     print("Reply with these short codes : ca - create account,  ex -exit ")
     
-    
 
-    while True:
-        short_code = input().lower()
-
-        if short_code == 'cc':
-            
+    if short_code == 'cc':
             print("Creating account...")
             print("Key in these details:")
             print("Username: ")
             username = input()
-            
-            print("\n")
 
             print("Password: ")
             password = input()
@@ -127,7 +128,7 @@ def main():
             print("Use these short codes : ca - create a new account, da - display accounts, fa -find an account, gp - generate a random password , ex -exit t")
             
 
-        elif short_code == "ca":
+    elif short_code == "ca":
             print("Enter account details: ")
   
             account = input()
